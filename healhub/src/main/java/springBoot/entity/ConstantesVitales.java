@@ -10,7 +10,7 @@ import jakarta.persistence.OneToOne;
 public class ConstantesVitales {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private int id;
 	@OneToOne
 	private Registro registro;
     private String deposiciones;
@@ -148,6 +148,11 @@ public class ConstantesVitales {
 				+ frecuenciaRespiratoria + ", temperatura=" + temperatura + ", pulso=" + pulso + ", saturacionOxigeno="
 				+ saturacionOxigeno + ", peso=" + peso + ", talla=" + talla + ", diuresis=" + diuresis + ", STP=" + STP
 				+ "]";
+	}
+
+	public void setRegistro(Registro registro) {
+		// TODO Auto-generated method stub
+		this.registro = registro;
 	}
 	
     

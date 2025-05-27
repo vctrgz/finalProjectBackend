@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -23,6 +24,8 @@ public class Paciente {
 	private Habitacion habitacion;
 	@OneToMany
 	private List<Registro> registros = new ArrayList<>();
+	@OneToOne(mappedBy = "paciente", cascade = CascadeType.ALL, orphanRemoval = true)
+	private Diagnostico diagnostico;
 
 	private String nombre;
 	private String apellidos;
@@ -76,7 +79,14 @@ public class Paciente {
 	public void setApellidos(String apellidos) {
 		this.apellidos = apellidos;
 	}
-	
+
+	public Diagnostico getDiagnostico() {
+		return diagnostico;
+	}
+	public void setDiagnostico(Diagnostico diagnostico) {
+		this.diagnostico = diagnostico;
+	}
+
 	public Date getFechaNacimiento() {
 		return fechaNacimiento;
 	}

@@ -1,5 +1,6 @@
 package springBoot.entity;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 import jakarta.persistence.CascadeType;
@@ -22,12 +23,10 @@ public class Registro {
 	@JoinColumn(name = "pac_numHistorial") 
 	private Paciente paciente;
     @OneToOne(mappedBy = "registro", cascade = CascadeType.ALL, orphanRemoval = true)
-	private Diagnostico diagnostico;
-    @OneToOne(mappedBy = "registro", cascade = CascadeType.ALL, orphanRemoval = true)
 	private ConstantesVitales constantesVitales;
 	
 	private String numTrabajador;
-	private LocalDateTime fechaRegistro;
+	private LocalDate fechaRegistro;
 	private Integer thigId;
 	private String observaciones;
 //	private Integer dietaId;
@@ -39,7 +38,7 @@ public class Registro {
 	
 	
 	
-	public Registro(Integer registroId, String numTrabajador, LocalDateTime fechaRegistro, Integer numHistorial,
+	public Registro(Integer registroId, String numTrabajador, LocalDate fechaRegistro, Integer numHistorial,
 			Integer thigId, String observaciones, Integer dietaId, Integer drenajeId, Integer movilidadId,
 			Diagnostico diagnostico, Integer constantesVitalesId) {
 		super();
@@ -48,7 +47,6 @@ public class Registro {
 		this.fechaRegistro = fechaRegistro;
 		this.thigId = thigId;
 		this.observaciones = observaciones;
-		this.diagnostico = diagnostico;
 //		this.dietaId = dietaId;
 //		this.drenajeId = drenajeId;
 //		this.movilidadId = movilidadId;
@@ -63,6 +61,18 @@ public class Registro {
 		this.registroId = registroId;
 	}
 
+	public Paciente getPaciente() {
+		return paciente;
+	}
+
+
+
+	public void setPaciente(Paciente paciente) {
+		this.paciente = paciente;
+	}
+
+
+
 	public String getNumTrabajador() {
 		return numTrabajador;
 	}
@@ -71,11 +81,11 @@ public class Registro {
 		this.numTrabajador = numTrabajador;
 	}
 
-	public LocalDateTime getFechaRegistro() {
+	public LocalDate getFechaRegistro() {
 		return fechaRegistro;
 	}
 
-	public void setFechaRegistro(LocalDateTime fechaRegistro) {
+	public void setFechaRegistro(LocalDate fechaRegistro) {
 		this.fechaRegistro = fechaRegistro;
 	}
 
@@ -95,23 +105,6 @@ public class Registro {
 		this.observaciones = observacion;
 	}
 
-	
-	
-	
-	
-
-	public Diagnostico getDiagnostico() {
-		return diagnostico;
-	}
-
-
-
-	public void setDiagnostico(Diagnostico diagnostico) {
-		this.diagnostico = diagnostico;
-	}
-
-
-
 	public ConstantesVitales getConstantesVitales() {
 		return constantesVitales;
 	}
@@ -126,8 +119,8 @@ public class Registro {
 
 	@Override
 	public String toString() {
-		return "Registro [registroId=" + registroId + ", paciente=" + paciente + ", diagnostico=" + diagnostico
-				+ ", constantesVitales=" + constantesVitales + ", numTrabajador=" + numTrabajador + ", fechaRegistro="
+		return "Registro [registroId=" + registroId + ", paciente=" + paciente + ", constantesVitales=" 
+				+ constantesVitales + ", numTrabajador=" + numTrabajador + ", fechaRegistro="
 				+ fechaRegistro + ", thigId=" + thigId + ", observaciones=" + observaciones + "]";
 	}
 

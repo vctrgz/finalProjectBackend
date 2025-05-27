@@ -13,7 +13,7 @@ public class Diagnostico {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int diaId;
 	@OneToOne
-	private Registro registro;
+	private Paciente paciente;
 	private String diaDiagnostico;
 	private String diaMotivo;
 	private int dia02;
@@ -25,8 +25,8 @@ public class Diagnostico {
 	private String diaSVDebito;
 	private int diaSR;
 	private String diaSRDebito;
-	private String diaSRG;
-	private String diaSRGDesc;
+	private int diaSNG;
+	private String diaSNGDesc;
 	
 	
 	public Diagnostico() {}
@@ -112,20 +112,20 @@ public class Diagnostico {
 		this.diaSRDebito = diaSRDebito;
 	}
 
-	public String getDiaSRG() {
-		return diaSRG;
+	public int getDiaSNG() {
+		return diaSNG;
 	}
 
-	public void setDiaSRG(String diaSRG) {
-		this.diaSRG = diaSRG;
+	public void setDiaSNG(int diaSNG) {
+		this.diaSNG = diaSNG;
 	}
 
-	public String getDiaSRGDesc() {
-		return diaSRGDesc;
+	public String getDiaSNGDesc() {
+		return diaSNGDesc;
 	}
 
-	public void setDiaSRGDesc(String diaSRGDesc) {
-		this.diaSRGDesc = diaSRGDesc;
+	public void setDiaSNGDesc(String diaSRGDesc) {
+		this.diaSNGDesc = diaSRGDesc;
 	}
 
 	public int getDiaId() {

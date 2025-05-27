@@ -27,8 +27,11 @@ public class RegistroController {
     	Optional<Registro> newRegistro = registroRepository.findByRegistroId(registro.getRegistroId());
     	if (!newRegistro.isPresent()) {
     		try {   
-    			System.out.println(registro);
+    			if (registro.getConstantesVitales() != null) {
+    				registro.getConstantesVitales().setRegistro(registro);
+    			}
     			Registro createdRegistro = registroRepository.save(registro);
+    			System.out.println(createdRegistro.getRegistroId());
     			return ResponseEntity.status(HttpStatus.CREATED).body(createdRegistro);
     		} catch (Exception e) {
     			// TODO: handle exception
